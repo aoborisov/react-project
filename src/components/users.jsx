@@ -62,20 +62,6 @@ const Users = () => {
 		const newUsersArr = users.filter(user => {
 			return user._id !== userIdFroDelete
 		})
-		console.log(
-			Number(
-				String(users.length - 1)
-					.split('')
-					.reverse()[0]
-			) >= 2 &&
-				Number(
-					String(users.length - 1)
-						.split('')
-						.reverse()[0]
-				) <= 4
-				? 'а'
-				: ''
-		)
 		setUsers(newUsersArr)
 	}
 
