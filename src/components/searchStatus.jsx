@@ -1,19 +1,30 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const SearchStatus = props => {
-	return props.users.length > 0 ? (
-		<div className="badge bg-primary">
-			{props.users.length} человек
-			{Number(String(props.users.length).split('').reverse()[0]) >= 2 &&
-			Number(String(props.users.length).split('').reverse()[0]) <= 4 &&
-			(props.users.length < 10 || props.users.length > 20)
-				? 'а'
-				: ''}{' '}
-			тусанет с тобой сегодня
-		</div>
-	) : (
-		<div className="badge bg-danger">Никто не тусатнет с тобой сегодня</div>
-	)
+const SearchStatus = ({ users }) => {
+    if (users.length > 0) {
+        return (
+            <div className="badge bg-primary">
+                {users.length} человек
+                {Number(String(users.length).split('').reverse()[0]) >= 2 &&
+                Number(String(users.length).split('').reverse()[0]) <= 4 &&
+                (users.length < 10 || users.length > 20)
+                    ? 'а'
+                    : ''}{' '}
+                тусанет с тобой сегодня
+            </div>
+        )
+    } else {
+        return (
+            <div className="badge bg-danger">
+                Никто не тусатнет с тобой сегодня
+            </div>
+        )
+    }
+}
+
+SearchStatus.propTypes = {
+    users: PropTypes.array.isRequired
 }
 
 export default SearchStatus
