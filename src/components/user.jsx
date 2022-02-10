@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const User = ({ user, onBookmark, onDelete }) => {
     return (
-        <tr key={user._id}>
+        <tr className="align-middle" key={user._id}>
             <td>{user.name}</td>
             <td>
                 {user.qualities.map((qualitie) => {
@@ -31,7 +31,7 @@ const User = ({ user, onBookmark, onDelete }) => {
                         onDelete(user._id)
                     }}
                 >
-                    delete
+                    Удалить
                 </button>
             </td>
         </tr>

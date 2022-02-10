@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import UsersList from './components/usersList'
 import API from './api'
-import SearchStatus from './components/searchStatus'
 
 const App = () => {
     const initialState = API.users.fetchAll()
-    const [users, setUsers] = useState(initialState)
+    const [users, setUsers] = useState()
+    useEffect(() => initialState.then((data) => setUsers(data)), [])
 
     function handleDelete(id) {
+        console.log(id)
+
         const newUsers = users.filter((user) => user._id !== id)
         setUsers(newUsers)
     }
@@ -26,16 +28,14 @@ const App = () => {
         setUsers(newUsers)
     }
 
-    return (
-        <>
-            <SearchStatus users={users} />
-            <UsersList
-                users={users}
-                onDelete={handleDelete}
-                onBookmark={handleBookmark}
-            />
-        </>
-    )
+    // eslint-disable-next-line multiline-ternary
+    return users ? (
+        <UsersList
+            users={users}
+            onDelete={handleDelete}
+            onBookmark={handleBookmark}
+        />
+    ) : null
 }
 
 export default App
