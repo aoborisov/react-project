@@ -5,10 +5,25 @@ import Bookmark from './bookmark'
 import QualitiesList from './qualitiesList'
 import Table from './table'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 
 const TableUsers = ({ usersCrop, onDelete, onBookmark, sortBy, onSort }) => {
+    const history = useHistory()
     const tableUsersColumn = {
-        name: { path: 'name', title: 'Имя' },
+        name: {
+            path: 'name',
+            title: 'Имя',
+            component: (item) => {
+                return (
+                    <span
+                        type="button"
+                        onClick={() => history.push(`/users/${item._id}`)}
+                    >
+                        {item.name}
+                    </span>
+                )
+            }
+        },
         qualities: {
             title: 'Качество',
             component: (item) => {

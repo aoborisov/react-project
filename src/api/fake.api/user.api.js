@@ -150,4 +150,11 @@ const fetchAll = () =>
         }, 500)
     })
 
-export default { fetchAll }
+const getById = (id) =>
+    new Promise((resolve) => {
+        window.setTimeout(() => {
+            resolve(users.filter((user) => user._id === id))
+        }, 100)
+    })
+
+export default { fetchAll, getById }

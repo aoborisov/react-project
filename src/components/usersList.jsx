@@ -132,7 +132,7 @@ const UsersList = () => {
 
         return renderPhrase()
     } else {
-        return <div>Loading</div>
+        return <div className="m-3">Loading...</div>
     }
 }
 
