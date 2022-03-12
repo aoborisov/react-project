@@ -5,8 +5,6 @@ const NavBar = () => {
     const history = useHistory()
     const location = useLocation()
 
-    console.log(location.pathname)
-
     return (
         <ul className="nav nav-tabs m-3 mb-0">
             <li className="nav-item">
