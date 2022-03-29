@@ -7,8 +7,7 @@ const SelectField = ({
     onChange,
     defaultOption,
     options,
-    error,
-    name
+    error
 }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
@@ -27,13 +26,13 @@ const SelectField = ({
 
     return (
         <div className="mb-4">
-            <label htmlFor={name} className="form-label">
+            <label htmlFor="validationCustom04" className="form-label">
                 {label}
             </label>
             <select
                 className={getInputClasses()}
-                id={name}
-                name={name}
+                id="validationCustom04"
+                name="profession"
                 value={value}
                 onChange={handleChange}
             >
@@ -51,15 +50,13 @@ const SelectField = ({
         </div>
     );
 };
-
 SelectField.propTypes = {
     defaultOption: PropTypes.string,
     label: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
     error: PropTypes.string,
-    options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-    name: PropTypes.string
+    options: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 };
 
 export default SelectField;
